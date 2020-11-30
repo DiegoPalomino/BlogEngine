@@ -43,9 +43,8 @@ namespace BlogEngine.Common.Entities
         /// <summary>
         /// 
         /// </summary>
-        [JsonIgnore]
         [NotMapped]
-        [Required]
+        [Required(ErrorMessage = "The Category selection is required")]
         public int IdCategory { get; set; }
     }
 }

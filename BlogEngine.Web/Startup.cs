@@ -42,6 +42,7 @@ namespace BlogEngine.Web
                 options.RequestCultureProviders.Clear();
             });
 
+            services.AddTransient<SeedDb>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
