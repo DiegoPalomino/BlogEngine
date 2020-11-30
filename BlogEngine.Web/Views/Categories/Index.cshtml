@@ -1,0 +1,66 @@
+﻿@using BlogEngine.Common.Entities
+@model IEnumerable<BlogEngine.Common.Entities.Category>
+
+@{
+    ViewData["Title"] = "Blog";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<br />
+
+<h2 style="text-align:center">Blog</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Categories</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="CategoriesTable">
+                    <tbody>
+                        <tr>
+                            <td align="right">
+                                <a asp-action="Create" class="btn btn-primary">Add</a>
+                            </td>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">@item.Title</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-heading">
+                <h3 class="panel-title">Posts</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="PostsTable">
+                    <tbody>
+                        <tr>
+                            <td align="right">
+                                <a asp-action="Create" asp-controller="Posts" class="btn btn-primary">Add</a>
+                            </td>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            @foreach (var post in item.Posts)
+                            {
+                                <tr>                                    
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@post.Id">@post.Title</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
