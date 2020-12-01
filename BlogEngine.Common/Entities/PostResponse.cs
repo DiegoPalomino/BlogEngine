@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BlogEngine.Common.Entities
 {
+    /// <summary>
+    /// Class to break the circular relationship
+    /// Classs Response Json messagges Rest API
+    /// </summary>
     public class PostResponse
     {
         public int Id { get; set; }

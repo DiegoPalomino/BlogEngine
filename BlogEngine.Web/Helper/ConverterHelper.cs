@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogEngine.Web.Helper
 {
@@ -43,6 +42,39 @@ namespace BlogEngine.Web.Helper
             foreach (Category category in categories)
             {
                 list.Add(ToCategoryResponse(category));
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns></returns>
+        public PostResponse ToPostResponse(Post post)
+        {
+            return new PostResponse
+            {
+                Id = post.Id,
+                Title = post.Title,
+                Content = post.Content,
+                PublicationDate = post.PublicationDate
+            };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="posts"></param>
+        /// <returns></returns>
+        public List<PostResponse> ToPostResponse(List<Post> posts)
+        {
+            List<PostResponse> list = new List<PostResponse>();
+            foreach (Post post in posts)
+            {
+                if(post.PublicationDate <= DateTime.UtcNow.Date)
+                    list.Add(ToPostResponse(post));
             }
 
             return list;

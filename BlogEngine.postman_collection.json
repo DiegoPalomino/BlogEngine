@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "80940d28-cd07-4684-8223-be571ae6f661",
+		"name": "BlogEngine",
+		"description": "BlogEngine tests Rest API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44313/api/categories",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/categories/[Id]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44313/api/categories/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"api",
+						"categories",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/categories/[ID]/posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44313/api/categories/3/posts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"api",
+						"categories",
+						"3",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44313/api/posts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/posts/[Id]",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44313/api/posts/10",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44313",
+					"path": [
+						"api",
+						"posts",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

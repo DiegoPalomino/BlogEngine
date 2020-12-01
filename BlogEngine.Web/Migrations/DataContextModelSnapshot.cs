@@ -67,7 +67,7 @@ namespace BlogEngine.Web.Migrations
 
             modelBuilder.Entity("BlogEngine.Common.Entities.Post", b =>
                 {
-                    b.HasOne("BlogEngine.Common.Entities.Category")
+                    b.HasOne("BlogEngine.Common.Entities.Category", "Category")
                         .WithMany("Posts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);

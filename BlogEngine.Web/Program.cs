@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace BlogEngine.Web
 {
     /// <summary>
-    /// 
+    /// Main program from the BlogEngine solution 
     /// </summary>
     public class Program
     {

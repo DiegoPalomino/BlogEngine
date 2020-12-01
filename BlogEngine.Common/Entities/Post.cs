@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlogEngine.Common.Entities
 {
     /// <summary>
-    /// 
+    /// Post Entity for Data Model 
     /// </summary>
     public class Post
     {
@@ -32,10 +31,9 @@ namespace BlogEngine.Common.Entities
         /// <summary>
         /// 
         /// </summary>
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Pub Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Required]
         public DateTime PublicationDate { get; set; }
 
         /// <summary>

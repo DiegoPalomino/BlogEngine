@@ -1,13 +1,11 @@
-﻿using System;
+﻿using BlogEngine.Common.Entities;
+using BlogEngine.Web.Data;
+using BlogEngine.Web.Helper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using BlogEngine.Common.Entities;
-using BlogEngine.Web.Data;
-using BlogEngine.Web.Helper;
 
 namespace BlogEngine.Web.Controllers.API
 {
@@ -22,7 +20,7 @@ namespace BlogEngine.Web.Controllers.API
         private readonly IConverterHelper _converterHelper;
 
         /// <summary>
-        /// 
+        /// Constructor CategoriesController and injection by attribute
         /// </summary>
         /// <param name="context"></param>
         /// <param name="converterHelper"></param>
@@ -32,15 +30,31 @@ namespace BlogEngine.Web.Controllers.API
             _converterHelper = converterHelper;
         }
 
+        /// <summary>
+        /// Rest Api GET to get the Categories
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetCategories()
         {
             List<Category> categories = await _context.Categories.Include(c => c.Posts).ToListAsync();
-            return Ok(_converterHelper.ToCategoryResponse(categories));
+            if (categories != null && categories.Count<Category>() > 0)
+            {
+                return Ok(_converterHelper.ToCategoryResponse(categories));
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
+        /// <summary>
+        /// Rest Api GET to get one Category by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCategory([FromRoute] int id)
+        public async Task<IActionResult> GetCategory(int id)
         {
             if (!ModelState.IsValid)
             {
@@ -59,7 +73,7 @@ namespace BlogEngine.Web.Controllers.API
         }
 
         /// <summary>
-        /// 
+        /// Rest Api GET to get the Posts by CategoryId
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

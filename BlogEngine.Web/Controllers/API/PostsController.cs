@@ -1,7 +1,9 @@
 ﻿using BlogEngine.Common.Entities;
 using BlogEngine.Web.Data;
+using BlogEngine.Web.Helper;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,28 +20,30 @@ namespace BlogEngine.Web.Controllers.API
     public class PostsController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IConverterHelper _converterHelper;
 
         /// <summary>
-        /// 
+        /// Constructor PostsController and injection by attribute
         /// </summary>
         /// <param name="context"></param>
-        public PostsController(DataContext context)
+        /// <param name="converterHelper"></param>
+        public PostsController(DataContext context, IConverterHelper converterHelper)
         {
             _context = context;
+            _converterHelper = converterHelper;
         }
 
         /// <summary>
-        /// 
+        /// Rest Api GET to get the Posts
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult GetPosts()
+        public async Task<IActionResult> GetPosts()
         {
-            var posts = _context.Posts;
-
+            List<Post> posts = await _context.Posts.ToListAsync();
             if (posts != null && posts.Count<Post>() > 0)
             {
-                return Ok(_context.Posts.Where(p => p.PublicationDate <= DateTime.UtcNow.Date).ToList());
+                return Ok(_converterHelper.ToPostResponse(posts));
             }
             else
             {
@@ -61,13 +65,12 @@ namespace BlogEngine.Web.Controllers.API
             }
 
             var post = await _context.Posts.FindAsync(id);
-
             if (post == null)
             {
                 return NotFound();
             }
 
-            return Ok(post);
+            return Ok(_converterHelper.ToPostResponse(post));
         }
     }
 }
