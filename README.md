@@ -5,7 +5,7 @@ Solution BlogEngine
 
 BlogEngine.Common 
 	.NET Standard 2.0
-	#Common entities for Rest API service and web project 
+	#Common entities for Rest API services and MVC Web project 
 
 BlogEngine.Web
 
