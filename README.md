@@ -8,15 +8,16 @@ BlogEngine.Common
 	#Common entities for Rest API service and web project 
 
 BlogEngine.Web
+
 	.NET Core 2.1
-	MVC Sosftware Patron
+	Modelo–vista–controlador (Model–view–controller)
 
 	Controllers API
 	Controllers MVC
 
 	Data
 	DataContext
-	SeedDB to populate DB
+	SeedDB to populate DB with data
 
 	Helper (Converter entities to break the circular relationship to Rest Api Services)
 	ConverterHelper
