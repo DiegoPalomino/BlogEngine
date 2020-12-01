@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace BlogEngine.Common.Entities
@@ -17,7 +16,7 @@ namespace BlogEngine.Common.Entities
         /// <summary>
         /// 
         /// </summary>
-        [MaxLength(50,ErrorMessage = "The field {0} must contain less than {1} characteres.")]
+        [MaxLength(50, ErrorMessage = "The field {0} must contain less than {1} characteres.")]
         [Required]
         public string Title { get; set; }
 

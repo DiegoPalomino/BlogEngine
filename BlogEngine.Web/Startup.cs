@@ -1,4 +1,5 @@
 ﻿using BlogEngine.Web.Data;
+using BlogEngine.Web.Helper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +44,7 @@ namespace BlogEngine.Web
             });
 
             services.AddTransient<SeedDb>();
+            services.AddScoped<IConverterHelper, ConverterHelper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

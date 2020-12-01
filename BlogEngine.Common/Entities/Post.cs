@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace BlogEngine.Common.Entities
 {
@@ -35,16 +33,16 @@ namespace BlogEngine.Common.Entities
         /// 
         /// </summary>
         [Display(Name = "Pub Date")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required]
         public DateTime PublicationDate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        [NotMapped]
         [Required(ErrorMessage = "The Category selection is required")]
-        public int IdCategory { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

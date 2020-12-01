@@ -46,7 +46,7 @@ namespace BlogEngine.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Category category = await _context.Categories.Include(c => c.Posts).FirstOrDefaultAsync(c => c.Id == post.IdCategory);
+                Category category = await _context.Categories.Include(c => c.Posts).FirstOrDefaultAsync(c => c.Id == post.CategoryId);
 
                 if (category == null)
                 {
@@ -78,7 +78,7 @@ namespace BlogEngine.Web.Controllers
 
             }
 
-            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Title");
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Title", post.CategoryId);
             return View(post);
         }
 
@@ -101,9 +101,9 @@ namespace BlogEngine.Web.Controllers
             }
 
             Category category = await _context.Categories.FirstOrDefaultAsync(c => c.Posts.FirstOrDefault(p => p.Id == post.Id) != null);
-            post.IdCategory = category.Id;
+            post.CategoryId = category.Id;
 
-            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Title");
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Title", post.CategoryId);
             return View(post);
         }
 
@@ -147,7 +147,7 @@ namespace BlogEngine.Web.Controllers
                 }
             }
 
-            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Title");
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Title", post.CategoryId);
             return View(post);
         }
     }

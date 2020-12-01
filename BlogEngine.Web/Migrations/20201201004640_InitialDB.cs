@@ -30,7 +30,7 @@ namespace BlogEngine.Web.Migrations
                     Title = table.Column<string>(maxLength: 50, nullable: false),
                     Content = table.Column<string>(maxLength: 500, nullable: false),
                     PublicationDate = table.Column<DateTime>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: true)
+                    CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,7 +40,7 @@ namespace BlogEngine.Web.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
